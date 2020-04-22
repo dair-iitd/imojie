@@ -1,0 +1,15 @@
+data
+.vscode
+**/__pycache__/**
+benchmark/outs
+dump
+*.pyc
+**/._*
+**/pkl_outputs
+benchmark/graphs/**
+STDIN.*
+jobs
+models
+.ipynb_checkpoints
+.*.swp
+!imojie/models
