@@ -1,4 +1,4 @@
-data
+data/
 .vscode
 **/__pycache__/**
 benchmark/outs
@@ -9,7 +9,10 @@ dump
 benchmark/graphs/**
 STDIN.*
 jobs
-models
+models/
 .ipynb_checkpoints
 .*.swp
 !imojie/models
+!allennlp/allennlp/tests/models/
+!allennlp/allennlp/models/
+!models
