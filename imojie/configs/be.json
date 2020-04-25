@@ -59,9 +59,9 @@
     "max_tokens": 100 
   }, 
    "vocabulary": {
-   "directory_path": "models/vocab/bert"
+   "directory_path": "data/vocab/bert"
   },
-  "train_data_path": "data/oie4_extractions.tsv",
+  "train_data_path": "data/train/oie4_extractions.tsv",
   "validation_data_path": "data/dev/carb_sentences.txt",
   "model": {
     "type": "copy_seq2seq_bahdanu",

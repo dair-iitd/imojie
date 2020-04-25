@@ -14,7 +14,8 @@ do
 	num=$(echo $base | tr -dc '0-9')
 	echo $num
 	i=$(($i+1))
-	$HOME/.local/bin/allennlp predict $exp_dir $test_ --include-package imojie --predictor noie_seq2seq --output-file $exp_dir/$pred_dir/output_$num.jsonl --weights-file $weights --cuda-device 0 --batch-size 128 --overrides '{"model": {"beam_size": '$beam_size'}}' &
+	# $HOME/.local/bin/allennlp
+	allennlp predict $exp_dir $test_ --include-package imojie --predictor noie_seq2seq --output-file $exp_dir/$pred_dir/output_$num.jsonl --weights-file $weights --cuda-device 0 --batch-size 128 --overrides '{"model": {"beam_size": '$beam_size'}}' &
 	if [ "$(($i%$num_process))" -eq "0" ]; then
 		wait
 	fi

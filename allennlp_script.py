@@ -21,7 +21,7 @@ def parse_args():
     parser.add_argument('--overrides', default="", type=str)
     parser.add_argument('--test_fp', default="test/carb", type=str)
     parser.add_argument('--mode', default="train_test", type=str)
-    parser.add_argument('--type', default="append", type=str)
+    parser.add_argument('--type', default="append", type=str) # append, single
     parser.add_argument('--perform', default="gen_pro_carb_compile", type=str)
     parser.add_argument('--num_process', default=2, type=int)
     parser.add_argument('--beam_size', default=5, type=int)
