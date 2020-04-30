@@ -1,4 +1,4 @@
-import pdb
+import ipdb
 import json
 import argparse
 import rouge
@@ -36,8 +36,6 @@ def qpbo(out_fp, sent_list, graphD, node_edgeD):
             visit[j] = True
             graph.add_unary_term(j, 0, -node_edgeD[sent_list[i]][j])
         l1 = list(visit.values())
-        if True in l1:
-            cnt += 1
         for j in range(num):
             for k in range(j+1, num):
                 edge_score = node_edgeD[sent_list[i]][(j,k)]
@@ -48,6 +46,7 @@ def qpbo(out_fp, sent_list, graphD, node_edgeD):
         graph.compute_weak_persistencies()
         twice_energy = graph.compute_twice_energy()
         for n in range(nodes_to_add):
+            cnt += 1
             segment = graph.get_label(n)
             if segment == 1:
                 f.write(sent_list[i] + '\t' + graphD[sent_list[i]][n] + '\t' + str(math.log(node_edgeD[sent_list[i]][n])) + '\n')
@@ -83,7 +82,7 @@ def get_data(inp_fp):
             cnt += 1
     sent_list = []
     sent_dict = extD
-    for key in sent_dict:
+    for key in tqdm(sent_dict):
         sent_list.append(key)
         node_edgeD[key] = dict()
         num = len(sent_dict[key])

@@ -283,6 +283,7 @@ class CopyNetSeq2Seq(Model):
 
     def forward_append(self, source_tokens, source_token_ids, source_to_target, metadata, target_tokens, target_token_ids, optimizer):
         if target_tokens:
+            # output_dict = self.train_append(source_tokens, source_token_ids, source_to_target, metadata, target_tokens, target_token_ids, optimizer=optimizer)
             if self.training:
                 output_dict = self.train_append(source_tokens, source_token_ids, source_to_target, metadata, target_tokens, target_token_ids, optimizer=optimizer)
             else:
@@ -537,7 +538,6 @@ class CopyNetSeq2Seq(Model):
         
         probs = torch.cat([torch.tensor(p).unsqueeze(1) for p in probs], dim=1)
         output_dict = {'loss': loss_dict['loss'], 'probs': probs}
-
         return output_dict
 
 

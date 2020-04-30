@@ -64,7 +64,6 @@ def generate_probs(model_dir, inp_fp, weights_fp, type_, out_fp, out_ext, cuda_d
     # Not an issue as they are just overwritten while forming the probsD
     for i in range(len(probs['example_ids'])):
         probsD[probs['example_ids'][i]] = probs['probs'][i]
-
     lines = open(inp_fp).readlines()
 
     all_fields = []
@@ -78,6 +77,49 @@ def generate_probs(model_dir, inp_fp, weights_fp, type_, out_fp, out_ext, cuda_d
         fields[2] = str(probsD[line_number])
         all_fields.append('\t'.join(fields))
 
+    # if type_ == 'single':
+    #     all_fields = []
+    #     for line_number, line in enumerate(lines):
+    #         line = line.strip('\n')
+    #         fields = line.split('\t')
+    #         if line_number not in probsD: # the example is too large and rejected by dataloader ('max_tokens' argument)
+    #             continue
+    #         # Removing appended extractions after reranking
+    #         fields[0] = fields[0].split('[SEP]')[0].strip()
+    #         fields[2] = str(probsD[line_number])
+    #         all_fields.append('\t'.join(fields))
+    # elif type_ == 'append':
+    #     all_fields = []
+    #     all_examples = dict()
+    #     extractions = []
+    #     lines = lines + ['']
+    #     for line_number, line in enumerate(lines):
+    #         line = line.strip('\n')
+    #         if line_number != len(lines)-1:
+    #             sentence, extraction, confidence = line.split('\t')
+    #         else:
+    #             sentence, extraction, confidence = '', '', 1
+    #         if line_number == 0:
+    #             old_sentence = sentence
+    #         if line_number == len(lines)-1 or sentence != old_sentence:
+    #             # if line_number == len(lines)-1:
+    #                 # extractions.append(extraction)
+    #                 # old_sentence = sentence
+    #             all_examples[line_number-1] = [old_sentence, extractions]
+
+    #             old_sentence = sentence
+    #             extractions = []
+    #         extractions.append(extraction)
+
+    #     for line_number in probsD:
+    #         # assert line_number in all_examples
+    #         if line_number not in all_examples:
+    #             continue
+    #         sentence, extractions = all_examples[line_number]
+    #         for ext_num, extraction in enumerate(extractions):
+    #             confidence = probsD[line_number][ext_num].item()
+    #             out = sentence+'\t'+extraction+'\t'+str(confidence)
+    #             all_fields.append(out)
 
     # sorting all_fields according to the confidences assigned by bert_encoder
     all_fields_sorted = []

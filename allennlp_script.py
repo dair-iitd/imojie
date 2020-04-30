@@ -130,7 +130,7 @@ def main():
     if args.batch_size != None:
         overrideD['batch_size'] = args.batch_size
     
-    if args.mode == 'train' or args.mode == 'train_test':
+    if 'train' in args.mode:
         train_model_from_file( parameter_filename=args.param_path,
                                     serialization_dir=model_dir,
                                     force=args.force,
@@ -138,7 +138,7 @@ def main():
                                     overrides=args.overrides
                                 )
     
-    if args.mode == 'test' or args.mode == 'train_test':
+    if 'test' in args.mode:
         append = False
         if 'append' in configD['model']:
             append = configD['model']['append']

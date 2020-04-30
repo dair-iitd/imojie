@@ -10,3 +10,5 @@ STDIN.*
 jobs
 .ipynb_checkpoints
 .*.swp
+data
+models

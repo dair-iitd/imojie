@@ -203,6 +203,11 @@ class CopySeq2MultiSeqNetDatasetReader(DatasetReader):
                             target_sequences = None
 
                         if  self._probability:
+                            # instance = self.text_to_instance(source_sequence, target_sequences, line_num-1, \
+                            #     validation=self._validation, gradients=self._gradients, confidences=confidences)
+                            # if instance != None:
+                            #     yield instance
+                            
                             append_sequence = source_sequence
                             for target_i, target_sequence in enumerate(target_sequences):
                                 target_num = line_num - len(target_sequences) + target_i 
