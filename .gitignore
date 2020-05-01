@@ -13,3 +13,4 @@ jobs
 data
 models
 md5sums.txt
+*.tar.gz
