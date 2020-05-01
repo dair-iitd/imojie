@@ -1,6 +1,6 @@
 # IMoJIE
 
-Iterative Memory based Joint OpenIE
+Iterative Memory based Joint OpenIE (please don't ask us where the "Joint" came from ;))
 
 A BERT-based OpenIE system that generates extraction using an iterative Seq2Seq model, as described in the following publication, in ACL 2020, [insert link here](https://www.google.com)
 
@@ -78,7 +78,20 @@ models/be/test/carb_3/best_results.txt \
 
 ## Resources
 
-You can find the pre-trained models and the predictions of the systems from this link:
+Downloading the pre-trained models:
+```
+zenodo_get 3779954
+```
+
+Downloading the data:
+```
+zenodo_get 3775983
+```
+
+Downloading the results:
+```
+zenodo_get 3780045
+```
 
 ### Citing
 If you use this code, please cite:
@@ -92,10 +105,10 @@ If you use this code, please cite:
       Rathore, Vipul and
       Mausam, Mausam and
       Chakrabarti, Soumen",
-    booktitle = "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
-    month = nov,
-    year = "2019",
-    address = "Hong Kong, China",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+    month = july,
+    year = "2020",
+    address = "Seattle, U.S.A",
     publisher = "Association for Computational Linguistics",
     url = "https://www.aclweb.org/anthology/D19-1651",
     doi = "10.18653/v1/D19-1651",

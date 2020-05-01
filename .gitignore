@@ -12,3 +12,4 @@ jobs
 .*.swp
 data
 models
+md5sums.txt
