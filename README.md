@@ -94,31 +94,22 @@ zenodo_get 3780045
 ```
 
 ### Citing
-If you use this code, please cite:
+If you use this code in your research, please cite:
 
-## !Update this!
 ```
-@inproceedings{kolluru-etal-2020-imojie,
-    title = "{IM}o{JIE}: {I}terative {M}emory-{B}ased {J}oint {O}pen {I}nformation {E}xtraction",
+@inproceedings{kolluru2020imojie,
+    title = "IMoJIE: Iterative Memory-Based Joint Open Information Extraction",
     author = "Kolluru, Keshav  and
       Aggarwal, Samarth  and
       Rathore, Vipul and
       Mausam, Mausam and
       Chakrabarti, Soumen",
-    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
-    month = july,
+    booktitle = "The 58th Annual Meeting of the Association for Computational Linguistics (ACL)",
+    month = July,
     year = "2020",
-    address = "Seattle, U.S.A",
-    publisher = "Association for Computational Linguistics",
-    url = "https://www.aclweb.org/anthology/D19-1651",
-    doi = "10.18653/v1/D19-1651",
-    pages = "6263--6268",
-    abstract = "While traditional systems for Open Information Extraction were statistical and rule-based, recently neural models have been introduced for the task. Our work builds upon CopyAttention, a sequence generation Open IE model. Our analysis reveals that CopyAttention produces a constant number of extractions per sentence, and its extracted tuples often express redundant information.
-    We present IMoJIE, an extension to CopyAttention, which produces the next extraction conditioned on all previously extracted tuples. This approach overcomes both shortcomings of CopyAttention, resulting in a variable number of diverse extractions per sentence. We train IMoJIE on training data bootstrapped from extractions of several non-neural systems, which have been automatically filtered to reduce redundancy and noise.  IMoJIE outperforms CopyAttention by about 18 F1 pts, and a BERT-based strong baseline by 2 F1 pts, establishing a new state of the art for the task. 
-",
+    address = {Seattle, U.S.A}
 }
 ```
-
 
 ## Contact
 In case of any issues, please send a mail to
