@@ -102,7 +102,7 @@ If you use this code in your research, please cite:
     author = "Kolluru, Keshav  and
       Aggarwal, Samarth  and
       Rathore, Vipul and
-      Mausam, Mausam and
+      Mausam, and
       Chakrabarti, Soumen",
     booktitle = "The 58th Annual Meeting of the Association for Computational Linguistics (ACL)",
     month = July,
