@@ -97,8 +97,8 @@ zenodo_get 3780045
 If you use this code in your research, please cite:
 
 ```
-@inproceedings{kolluru2020imojie,
-    title = "IMoJIE: Iterative Memory-Based Joint Open Information Extraction",
+@inproceedings{kolluru&al20,
+    title = "{IM}o{JIE}: {I}terative {M}emory-{B}ased {J}oint {O}pen {I}nformation {E}xtraction",
     author = "Kolluru, Keshav  and
       Aggarwal, Samarth  and
       Rathore, Vipul and
