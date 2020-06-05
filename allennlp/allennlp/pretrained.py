@@ -57,7 +57,7 @@ def naqanet_dua_2019() -> predictors.BidafPredictor:
 def open_information_extraction_stanovsky_2018() -> predictors.OpenIePredictor:
     # model = PretrainedModel('https://allennlp.s3.amazonaws.com/models/openie-model.2018-08-20.tar.gz', 'open-information-extraction')
     # CHANGED
-    model = PretrainedModel('~/scratch/neural_oie/models/traditional/rnnoie/openie-model.2018-08-20.tar.gz', 'open-information-extraction')
+    model = PretrainedModel('~/oie_extraction/rnnoie/openie-model.2018-08-20.tar.gz', 'open-information-extraction')
     return model.predictor() # type: ignore
 
 def decomposable_attention_with_elmo_parikh_2017() -> predictors.DecomposableAttentionPredictor:

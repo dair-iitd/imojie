@@ -62,6 +62,8 @@ from allennlp.models.archival import load_archive
 from allennlp.predictors.predictor import Predictor, JsonDict
 from allennlp.data import Instance
 
+import time
+
 class Predict(Subcommand):
     def add_subparser(self, name: str, parser: argparse._SubParsersAction) -> argparse.ArgumentParser:
         # pylint: disable=protected-access
@@ -196,6 +198,8 @@ class _PredictManager:
     def run(self) -> None:
         has_reader = self._dataset_reader is not None
         index = 0
+        start_time = time.time()
+        print('Starting prediction')   
         if has_reader:
             for batch in lazy_groups_of(self._get_instance_data(), self._batch_size):
                 for model_input_instance, result in zip(batch, self._predict_instances(batch)):
@@ -206,7 +210,10 @@ class _PredictManager:
                 for model_input_json, result in zip(batch_json, self._predict_json(batch_json)):
                     self._maybe_print_to_console_and_file(index, result, json.dumps(model_input_json))
                     index = index + 1
+        end_time = time.time()
 
+        print('Ending prediction')
+        print('Total Time = ',(end_time-start_time), ' s')
         if self._output_file is not None:
             self._output_file.close()
 

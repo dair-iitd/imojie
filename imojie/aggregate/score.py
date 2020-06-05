@@ -23,11 +23,12 @@ def parse_args():
     parser.add_argument('--cuda_device', type=int, default=0)
     parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--ext_ratio', type=float, default=1)
+    parser.add_argument('--topk', type=int)
     parser.add_argument('--overwrite', default=True, type=lambda x:bool(strtobool(x)))
 
     return parser
 
-def generate_probs(model_dir, inp_fp, weights_fp, type_, out_fp, out_ext, cuda_device, overwrite, batch_size, extraction_ratio=1):
+def generate_probs(model_dir, inp_fp, weights_fp, type_, out_fp, out_ext, cuda_device, overwrite, batch_size, extraction_ratio, hparams):
     import_submodules('imojie') 
 
     if out_fp == None:
@@ -130,6 +131,8 @@ def generate_probs(model_dir, inp_fp, weights_fp, type_, out_fp, out_ext, cuda_d
         if sent!=prev_sent:
             if prev_sent!=None:
                 exts = sorted(exts, reverse=True, key= lambda x: float(x.split('\t')[2]) )
+                if hparams.topk != None:
+                    exts = exts[:hparams.topk]
                 all_fields_sorted.extend(exts)
             prev_sent=sent
             exts=[f]
@@ -159,7 +162,7 @@ def main():
                 out_fp = args.out_dir + '/' + fp
                 generate_probs(args.model_dir, inp_fp, weights_fp, args.type, out_fp, args.out_ext, args.cuda_device, overwrite=args.overwrite, batch_size=args.batch_size)
     else:
-        generate_probs(args.model_dir, args.inp_fp, weights_fp, args.type, args.out_fp, args.out_ext, args.cuda_device, overwrite=args.overwrite, extraction_ratio=args.ext_ratio, batch_size=args.batch_size)
+        generate_probs(args.model_dir, args.inp_fp, weights_fp, args.type, args.out_fp, args.out_ext, args.cuda_device, overwrite=args.overwrite, extraction_ratio=args.ext_ratio, batch_size=args.batch_size, hparams=args)
 
     
 

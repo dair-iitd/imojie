@@ -25,6 +25,7 @@ from allennlp.models.archival import CONFIG_NAME
 from allennlp.nn import util as nn_util
 
 import ipdb
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -372,6 +373,7 @@ def evaluate(model: Model,
              data_iterator: DataIterator,
              cuda_device: int,
              batch_weight_key: str) -> Dict[str, Any]:
+    start_time = time.time()
     check_for_gpu(cuda_device)
     with torch.no_grad():
         model.eval()
@@ -441,6 +443,8 @@ def evaluate(model: Model,
                 final_metrics["example_ids"] = all_example_ids
 
 
+        end_time = time.time()
+        print('Time Elapsed = ',(end_time-start_time),'s')
         return final_metrics
 
 def description_from_metrics(metrics: Dict[str, float]) -> str:
