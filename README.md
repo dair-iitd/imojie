@@ -1,6 +1,6 @@
 # IMoJIE
 
-Iterative Memory based Joint OpenIE (please don't ask us where the "Joint" came from ;))
+Iterative Memory based Joint OpenIE
 
 A BERT-based OpenIE system that generates extraction using an iterative Seq2Seq model, as described in the following publication, in ACL 2020, [link](https://arxiv.org/abs/2005.08178)
 
