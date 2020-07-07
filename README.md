@@ -5,7 +5,7 @@ Iterative Memory based Joint OpenIE
 A BERT-based OpenIE system that generates extraction using an iterative Seq2Seq model, as described in the following publication, in ACL 2020, [link](https://arxiv.org/abs/2005.08178)
 
 ## Installation Instructions
-Create a new conda environment and install the dependencies using,
+Use a python-3.6 environment and install the dependencies using,
 ```
 pip install -r requirements.txt
 ```
