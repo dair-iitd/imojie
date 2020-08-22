@@ -1,6 +1,7 @@
 from allennlp.predictors import Predictor
 from allennlp.models.archival import load_archive
 from allennlp.common.util import import_submodules, JsonDict, sanitize
+import argparse
 import_submodules('imojie')
 
 def process(token_ids):
@@ -20,17 +21,31 @@ def process(token_ids):
             ans.append(x)
     return ans
 
-archive = load_archive(
-    "models/imojie",
-    weights_file="models/imojie/model_state_epoch_7.th",
-    cuda_device=-1)
+def main(args):
+    archive = load_archive(
+        "models/imojie",
+        weights_file="models/imojie/model_state_epoch_7.th",
+        cuda_device=-1)
 
-predictor = Predictor.from_archive(archive, "noie_seq2seq")
-inp_sent = 'I ate an apple and an orange'
-inp_instance = predictor._dataset_reader.text_to_instance(inp_sent)
-output = predictor._model.forward_on_instance(inp_instance)
-output = sanitize(output)
-output = process(output["predicted_tokens"][0])
-print(output)
+    predictor = Predictor.from_archive(archive, "noie_seq2seq")
+    out = open(args.out, 'w')
+    input_instances = []
+    sentences = []
+    for line in open(args.inp, 'r'):
+        instance = predictor._dataset_reader.text_to_instance(line)
+        input_instances.append(instance)
+        sentences.append(line)
+    output_instances = predictor._model.forward_on_instances(input_instances)
+    for output in output_instances:
+        output = sanitize(output)
+        output = process(output["predicted_tokens"][0])
+        out.write(line)
+        out.write('\n'.join(output)+'\n\n')
+    out.close()
 
-
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--inp')
+    parser.add_argument('--out')
+    args = parser.parse_args()
+    main(args)

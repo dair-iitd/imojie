@@ -30,6 +30,13 @@ Arguments:
 - s:  path of the directory where the model will be saved
 - mode: train, test, train_test
 
+### Generating extractions
+```
+python standalone.py --inp input.txt --out output.txt
+```
+input.txt contains one sentence in each line 
+output.txt contains the corresponding OpenIE extractions
+
 Important baselines:
 
 IMoJIE (on OpenIE-4 bootstrapping)
