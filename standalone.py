@@ -36,10 +36,10 @@ def main(args):
         input_instances.append(instance)
         sentences.append(line)
     output_instances = predictor._model.forward_on_instances(input_instances)
-    for output in output_instances:
+    for idx, output in enumerate(output_instances):
         output = sanitize(output)
         output = process(output["predicted_tokens"][0])
-        out.write(line)
+        out.write(sentences[idx])
         out.write('\n'.join(output)+'\n\n')
     out.close()
 
