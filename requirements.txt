@@ -33,7 +33,7 @@ flaky==3.6.1
 regex==2019.12.20
 pytorch_pretrained_bert==0.6.2
 docopt==0.6.2
-ipython==7.10.2
+ipython==7.16.3
 rouge==0.3.2
 scikit_learn==0.22
 sphinx_rtd_theme==0.4.3
