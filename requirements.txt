@@ -28,7 +28,7 @@ sqlparse==0.3.0
 sentencepiece==0.1.85
 pytest==5.3.2
 spacy==2.1.9
-numpy==1.17.4
+numpy==1.22.0
 flaky==3.6.1
 regex==2019.12.20
 pytorch_pretrained_bert==0.6.2
